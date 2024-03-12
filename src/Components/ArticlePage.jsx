@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById, updateArticleVote } from "../utils/api";
+import { getArticleById, updateArticleVote, postComment } from "../utils/api";
 import CommentsList from "./CommentsList";
 
 function ArticlePage() {
   const [article, setArticle] = useState(null);
   const [voteCount, setVoteCount] = useState(null);
+  const [commentText, setCommentText] = useState("");
   const { articleId } = useParams();
 
-  const handleVote = (updateVote) => {
+  function handleSubmit(event) {
+    event.preventDefault();
+    postComment(articleId, commentText).then((emptyCommentText) => {
+      setCommentText("");
+    });
+  }
+
+  function handleVote(updateVote) {
     setVoteCount((currCount) => {
       return currCount + updateVote;
     });
@@ -18,7 +26,7 @@ function ArticlePage() {
       });
       alert("Failed to update vote!");
     });
-  };
+  }
 
   useEffect(() => {
     getArticleById(articleId).then(({ article }) => {
@@ -46,6 +54,17 @@ function ArticlePage() {
       <p>Comments: {article.comment_count}</p>
       <section>
         <CommentsList articleId={articleId} />
+        <form onSubmit={handleSubmit}>
+          <textarea
+            value={commentText}
+            onChange={(event) => {
+              setCommentText(event.target.value);
+            }}
+            placeholder="Add a comment.."
+            required
+          ></textarea>
+          <button type="submit">Add Comment</button>
+        </form>
       </section>
     </article>
   );
