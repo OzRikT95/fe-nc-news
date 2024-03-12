@@ -25,3 +25,14 @@ export function getArticleById(articleId) {
       console.log(err);
     });
 }
+
+export function getCommentsByArticleId(articleId) {
+  return ncAPI
+    .get(`/api/articles/${articleId}/comments`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}

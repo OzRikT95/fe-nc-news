@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../utils/api";
+import CommentsList from "./CommentsList";
 
 function ArticlePage() {
   const [article, setArticle] = useState(null);
@@ -25,6 +26,9 @@ function ArticlePage() {
       <p>{article.body}</p>
       <p>Votes: {article.votes}</p>
       <p>Comments: {article.comment_count}</p>
+      <section>
+        <CommentsList articleId={articleId} />
+      </section>
     </article>
   );
 }
