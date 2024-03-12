@@ -10,7 +10,7 @@ function CommentsList({ articleId }) {
     getCommentsByArticleId(articleId).then((response) => {
       setComments(response.comments);
     });
-  }, [articleId]);
+  }, []);
 
   return (
     <div>
