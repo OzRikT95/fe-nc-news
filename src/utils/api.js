@@ -36,3 +36,15 @@ export function getCommentsByArticleId(articleId) {
       console.error(err);
     });
 }
+
+export function updateArticleVote(articleId, updateVote) {
+  return ncAPI
+    .patch(`/api/articles/${articleId}`, { new_votes: updateVote })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
+      return Promise.reject(err);
+    });
+}
