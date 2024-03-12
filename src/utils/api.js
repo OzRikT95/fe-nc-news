@@ -14,3 +14,14 @@ export function getArticleList() {
       console.log(err);
     });
 }
+
+export function getArticleById(articleId) {
+  return ncAPI
+    .get(`/api/articles/${articleId}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}

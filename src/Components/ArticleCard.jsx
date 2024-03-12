@@ -1,14 +1,16 @@
+import { Link } from "react-router-dom";
+
 function ArticleCard({ article }) {
   return (
-    <>
-      <li>
+    <li>
+      <Link to={`/articles/${article.article_id}`}>
         <h3>{article.title}</h3>
+      </Link>
+      <Link to={`/articles/${article.article_id}`}>
         <img src={article.article_img_url} alt="article img" />
-        <p>Topic: {article.topic}</p>
-        <p>Author: {article.author}</p>
-        <p>{article.body}</p>
-      </li>
-    </>
+      </Link>
+      <p>Votes: {article.votes}</p>
+    </li>
   );
 }
 
