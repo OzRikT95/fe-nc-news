@@ -48,3 +48,19 @@ export function updateArticleVote(articleId, updateVote) {
       return Promise.reject(err);
     });
 }
+
+export function postComment(articleId, body) {
+  const username = "tickle122";
+  return ncAPI
+    .post(`/api/articles/${articleId}/comments`, {
+      username,
+      body,
+    })
+    .then((response) => {
+      console.log(response.data.comment);
+      return response.data.comment;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
