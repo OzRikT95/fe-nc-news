@@ -73,3 +73,23 @@ export function deleteComment(commentId) {
       console.error(err);
     });
 }
+
+export function getTopics() {
+  return ncAPI
+    .get(`/api/topics`)
+    .then((response) => {
+      return response.data.topics;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function getArticlesByTopic(topicSlug) {
+  return ncAPI
+    .get(`/api/articles?topic=${topicSlug}`)
+    .then((response) => {
+      return response.data.articles;
+    })
+    .catch((err) => console.log(err));
+}
