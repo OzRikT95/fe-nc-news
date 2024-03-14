@@ -1,5 +1,5 @@
 function CommentCard({ comment, delComment, loggedInUsername }) {
-  const canDelete = comment.author === loggedInUsername;
+  const CorrectUser = comment.author === loggedInUsername;
 
   return (
     <li className="comment-card">
@@ -7,7 +7,7 @@ function CommentCard({ comment, delComment, loggedInUsername }) {
       <p>{comment.body}</p>
       <p>{comment.votes}</p>
       <p>{comment.created_at}</p>
-      {canDelete && (
+      {CorrectUser && (
         <button onClick={() => delComment(comment.comment_id)}>Delete</button>
       )}
     </li>
