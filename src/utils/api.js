@@ -49,18 +49,27 @@ export function updateArticleVote(articleId, updateVote) {
     });
 }
 
-export function postComment(articleId, body) {
-  const username = "tickle122";
+export function postComment(articleId, username, body) {
   return ncAPI
     .post(`/api/articles/${articleId}/comments`, {
       username,
       body,
     })
     .then((response) => {
-      console.log(response.data.comment);
       return response.data.comment;
     })
     .catch((err) => {
       console.log(err);
+    });
+}
+
+export function deleteComment(commentId) {
+  return ncAPI
+    .delete(`/api/comments/${commentId}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      console.error(err);
     });
 }
