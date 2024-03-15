@@ -54,7 +54,7 @@ function CommentsList({ articleId }) {
 
   return (
     <div>
-      <section>
+      <section className="list">
         <form onSubmit={handleSubmit}>
           <textarea
             value={commentText}
@@ -63,6 +63,7 @@ function CommentsList({ articleId }) {
             }}
             placeholder="Add a comment.."
             required
+            id="textarea"
           ></textarea>
           <button type="submit">Add Comment</button>
         </form>

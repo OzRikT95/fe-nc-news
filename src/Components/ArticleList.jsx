@@ -54,7 +54,7 @@ function ArticleList() {
     setSearchParams({ sort_by: newSortBy, order: newOrder });
   }
   return (
-    <section>
+    <section className="list">
       <h2>Article List</h2>
       <SortList sortBy={sortBy} order={order} />
       <ul>

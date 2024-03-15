@@ -4,7 +4,9 @@ import TopicsList from "./TopicsList";
 function TopicsPage() {
   return (
     <section>
-      <TopicsList />
+      <div className="list">
+        <TopicsList />
+      </div>
       <ArticlesList />
     </section>
   );

@@ -7,16 +7,16 @@ function Header() {
         <div>
           <nav>
             <Link to="/">
-              <p>Home</p>
+              <p className="navLinks">Home</p>
             </Link>
             <Link to="/articles">
-              <p>Articles</p>
+              <p className="navLinks">Articles</p>
             </Link>
             <Link to="/topics">
-              <p>Topics</p>
+              <p className="navLinks">Topics</p>
             </Link>
             <Link to="/user">
-              <p>User</p>
+              <p className="navLinks">User</p>
             </Link>
           </nav>
         </div>

@@ -44,16 +44,20 @@ function ArticlePage() {
   }
 
   return (
-    <article>
+    <article className="article">
       <h1>{article.title}</h1>
-      <img src={article.article_img_url} alt={article.title} />
+      <img id="articleImg" src={article.article_img_url} alt={article.title} />
       <p>Topic: {article.topic}</p>
       <p>Author: {article.author}</p>
       <p>{article.body}</p>
       <div>
         <span>Votes: {voteCount}</span>
-        <button onClick={() => handleVote(1)}>Upvote</button>
-        <button onClick={() => handleVote(-1)}>Downvote</button>
+        <button className="voteButtons" onClick={() => handleVote(1)}>
+          Upvote
+        </button>
+        <button className="voteButtons" onClick={() => handleVote(-1)}>
+          Downvote
+        </button>
       </div>
       <p>Comments: {article.comment_count}</p>
       <section>

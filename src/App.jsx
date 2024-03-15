@@ -7,14 +7,15 @@ import TopicsPage from "./Components/TopicsPage";
 // import UserProfilePage from "./Components/UserProfilePage";
 import TopicsCard from "./Components/TopicsCard";
 import NotFound from "./Components/404Page";
+import "./app.css";
 
 function App() {
   return (
     <>
-      <div>
+      <div className="header">
         <Header />
       </div>
-      <div>
+      <div className="app">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/articles" element={<ArticleList />} />
