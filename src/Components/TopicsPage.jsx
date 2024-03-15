@@ -1,9 +1,9 @@
-import TopicsList from "./TopicsList.jsx";
+import ArticlesList from "./ArticleList";
 
 function TopicsPage() {
   return (
     <section>
-      <TopicsList />
+      <ArticlesList />
     </section>
   );
 }

@@ -93,3 +93,14 @@ export function getArticlesByTopic(topicSlug) {
     })
     .catch((err) => console.log(err));
 }
+
+export function fetchArticles({ sortBy = "created_at", order = "desc" }) {
+  return ncAPI
+    .get(`/api/articles?sort_by=${sortBy}&order=${order}`)
+    .then((response) => {
+      return response.data.articles;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
