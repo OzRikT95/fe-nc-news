@@ -16,14 +16,9 @@ export function getArticleList() {
 }
 
 export function getArticleById(articleId) {
-  return ncAPI
-    .get(`/api/articles/${articleId}`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return ncAPI.get(`/api/articles/${articleId}`).then((response) => {
+    return response.data;
+  });
 }
 
 export function getCommentsByArticleId(articleId) {
@@ -86,12 +81,9 @@ export function getTopics() {
 }
 
 export function getArticlesByTopic(topicSlug) {
-  return ncAPI
-    .get(`/api/articles?topic=${topicSlug}`)
-    .then((response) => {
-      return response.data.articles;
-    })
-    .catch((err) => console.log(err));
+  return ncAPI.get(`/api/articles?topic=${topicSlug}`).then((response) => {
+    return response.data.articles;
+  });
 }
 
 export function fetchArticles({ sortBy = "created_at", order = "desc" }) {

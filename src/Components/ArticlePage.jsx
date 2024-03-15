@@ -7,6 +7,8 @@ function ArticlePage() {
   const [article, setArticle] = useState(null);
   const [voteCount, setVoteCount] = useState(null);
   const { articleId } = useParams();
+  const [isErr, setIsErr] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleVote(updateVote) {
     setVoteCount((currCount) => {
@@ -21,14 +23,24 @@ function ArticlePage() {
   }
 
   useEffect(() => {
-    getArticleById(articleId).then(({ article }) => {
-      setArticle(article);
-      setVoteCount(article.votes);
-    });
+    getArticleById(articleId)
+      .then(({ article }) => {
+        setArticle(article);
+        setVoteCount(article.votes);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsErr(true);
+        setIsLoading(false);
+      });
   }, []);
 
-  if (!article) {
+  if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  if (isErr) {
+    return <div>Error! 404 - Not Found</div>;
   }
 
   return (
